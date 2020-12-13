@@ -2,15 +2,17 @@ Jenkinsfile (Declarative Pipeline)
 
 pipeline {
 
-    agent {
-
-        docker { image 'localhost:5000/ubuntu' }
-
-    }
+    agent none
 
     stages {
 
-        stage('Test') {
+        stage('Back-end') {
+
+            agent {
+
+                docker { image 'localhost:5000/ubuntu' }
+
+            }
 
             steps {
 
@@ -20,6 +22,23 @@ pipeline {
 
         }
 
+        stage('Front-end') {
+
+            agent {
+
+                docker { image 'python-helloworld' }
+
+            }
+
+            steps {
+
+                sh 'python --version'
+
+            }
+
+        }
+
     }
 
 }
+
