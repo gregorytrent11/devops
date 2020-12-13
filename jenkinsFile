@@ -1,0 +1,25 @@
+Jenkinsfile (Declarative Pipeline)
+
+pipeline {
+
+    agent {
+
+        docker { image 'localhost:5000/ubuntu' }
+
+    }
+
+    stages {
+
+        stage('Test') {
+
+            steps {
+
+                sh 'node --version'
+
+            }
+
+        }
+
+    }
+
+}
